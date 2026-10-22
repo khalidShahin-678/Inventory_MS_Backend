@@ -17,13 +17,10 @@ import java.util.Optional;
 public interface ItemRepository extends JpaRepository<Item,Long> {
     List<Item> findByCategory(Category category);
 
-    List<Item> findByArName(String arName);
-    List<Item> findByEnName(String enName);
-
     List<Item> findByArNameContainingIgnoreCaseOrEnNameContainingIgnoreCase(String arName,String enName);
+
     boolean existsByArName(String arName);
     boolean existsByEnName(String enName);
-
     boolean existsByCode(String code);
 
     Optional<Item> findByCode(String code);

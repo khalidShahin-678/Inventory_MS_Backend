@@ -34,6 +34,10 @@ public class ItemController {
         return itemService.findByName(name);
     }
 
+    @GetMapping("/items/barcode/{barcode}")
+    public Item findByBarcode(@PathVariable String barcode){
+       return itemService.findByBarcode(barcode);
+    }
     // Post method
 
     @PostMapping("/items")

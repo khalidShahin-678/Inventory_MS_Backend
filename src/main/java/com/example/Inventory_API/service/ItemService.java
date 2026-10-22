@@ -43,12 +43,19 @@ public class ItemService {
 
         if(foundItems.isEmpty())throw new ItemNotFoundException("Not items found with name :" + name);
         return foundItems;
+
     }
 
     public List<Item> findByCategory(Category category){
         List<Item> foundItems = itemRepository.findByCategory(category);
         if(foundItems.isEmpty())throw new ItemNotFoundException("Not items found with category :" + category);
         return foundItems;
+    }
+
+    // Find By Barcode
+    public Item findByBarcode(String barcode){
+        if (barcode == null)throw new ItemNotFoundException("no Items found with barcode Null");
+        return itemRepository.findByCode(barcode).orElseThrow(()-> new ItemNotFoundException("No Items found with barcode :" + barcode));
     }
 
     //
@@ -91,5 +98,7 @@ public class ItemService {
         return itemRepository.save(existingItem);
 
     }
+
+
 
 }

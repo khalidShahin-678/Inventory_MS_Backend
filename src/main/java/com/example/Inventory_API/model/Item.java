@@ -1,6 +1,7 @@
 package com.example.Inventory_API.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.CreatedDate;
@@ -15,6 +16,7 @@ import java.util.List;
 public class Item {
     // One-to-Many relation between Item and Transactions
     @OneToMany(mappedBy = "item")
+    @JsonIgnore
     private List<Transaction> transactions;
 
     // Primary key
